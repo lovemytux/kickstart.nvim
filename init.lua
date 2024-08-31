@@ -91,7 +91,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
+
+-- Custom keymaps
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -102,7 +105,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -230,6 +233,8 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'preservim/nerdtree', -- NerdTree plugin
+  'akinsho/toggleterm.nvim', -- Toggletern plugin
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -270,6 +275,14 @@ require('lazy').setup({
   -- Then, because we use the `config` key, the configuration only runs
   -- after the plugin has been loaded:
   --  config = function() ... end
+  --
+  { 'preservim/nerdtree', vim.api.nvim_set_keymap('n', '<C-\\>', ':NERDTreeToggle<CR>', { noremap = true, silent = true }) },
+  {
+    'akinsho/toggleterm.nvim',
+    vim.api.nvim_set_keymap('n', '<leader>tth', '<Cmd>ToggleTerm size=20 direction=horizontal<CR>', { noremap = true, silent = true }),
+    vim.api.nvim_set_keymap('n', '<leader>ttv', '<Cmd>ToggleTerm size=150 direction=vertical<CR>', { noremap = true, silent = true }),
+    vim.api.nvim_set_keymap('n', '<leader>ttf', '<Cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true }),
+  },
 
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',

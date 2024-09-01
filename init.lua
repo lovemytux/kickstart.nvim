@@ -234,7 +234,13 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'preservim/nerdtree', -- NerdTree plugin
-  'akinsho/toggleterm.nvim', -- Toggletern plugin
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*', -- You can specify a version or branch
+    config = function()
+      require('toggleterm').setup {}
+    end,
+  },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -279,9 +285,9 @@ require('lazy').setup({
   { 'preservim/nerdtree', vim.api.nvim_set_keymap('n', '<C-\\>', ':NERDTreeToggle<CR>', { noremap = true, silent = true }) },
   {
     'akinsho/toggleterm.nvim',
-    vim.api.nvim_set_keymap('n', '<leader>tth', '<Cmd>ToggleTerm size=20 direction=horizontal<CR>', { noremap = true, silent = true }),
-    vim.api.nvim_set_keymap('n', '<leader>ttv', '<Cmd>ToggleTerm size=150 direction=vertical<CR>', { noremap = true, silent = true }),
-    vim.api.nvim_set_keymap('n', '<leader>ttf', '<Cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true }),
+    vim.api.nvim_set_keymap('n', '<leader>tth', ':ToggleTerm size=20 direction=horizontal<CR>', { noremap = true, silent = true }),
+    vim.api.nvim_set_keymap('n', '<leader>ttv', ':ToggleTerm size=150 direction=vertical<CR>', { noremap = true, silent = true }),
+    vim.api.nvim_set_keymap('n', '<leader>ttf', ':ToggleTerm direction=float<CR>', { noremap = true, silent = true }),
   },
 
   { -- Useful plugin to show you pending keybinds.

@@ -93,7 +93,7 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
--- Custom keymaps
+-- Custom keymaps & conf
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- [[ Setting options ]]
@@ -286,7 +286,7 @@ require('lazy').setup({
   {
     'akinsho/toggleterm.nvim',
     vim.api.nvim_set_keymap('n', '<leader>tth', ':ToggleTerm size=20 direction=horizontal<CR>', { noremap = true, silent = true }),
-    vim.api.nvim_set_keymap('n', '<leader>ttv', ':ToggleTerm size=150 direction=vertical<CR>', { noremap = true, silent = true }),
+    vim.api.nvim_set_keymap('n', '<leader>ttv', ':ToggleTerm size=30 direction=vertical<CR>', { noremap = true, silent = true }),
     vim.api.nvim_set_keymap('n', '<leader>ttf', ':ToggleTerm direction=float<CR>', { noremap = true, silent = true }),
   },
 
